@@ -62,4 +62,73 @@ class User
                  //if ($user->getName()
           }
     }
+
+    public function createUser()
+    {
+
+        $jsonToInsert = '{"userName":"'.$this->getName().'","userAdressEmail":"'.$this->getAdress().'"}';
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/users';
+
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
+            array("Content-type: application/json"));
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonToInsert);
+
+        $json_response = curl_exec($curl);
+
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+
+        echo $result;
+        var_dump($jsonToInsert);
+    }
+
+    public static function  deleteUserById($id)
+    {
+
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/users/delete/'.$id;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+        $json_response = curl_exec($curl);
+
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+        echo  $result;
+    }
+
+    public function updateUser()
+    {
+        $userToUpdate = '{"idUser":'.$this->getIdUser().',"userName":"'.$this->getName().'","userAdressEmail":"'.$this->getAdress().'"}';
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/users/update/'.$this->getIdUser();
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $userToUpdate);
+        $json_response = curl_exec($curl);
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+        echo  $result;
+    }
+
 }

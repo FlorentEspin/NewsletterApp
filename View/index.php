@@ -30,9 +30,12 @@ var_dump(attachment::getattachmentsByID(1));
 foreach (attachment::getAllattachment() as $item)
 {
     echo $item->getName();
-}*/
-$objectN = new newsletter(1,'a','b');
-$objectN->createNewsletter(1);
+}
+$objectN = new attachment(1,'adf','sdfklflmsdlmb');
+$objectN->createAttachment();
+*/
+$objectN = new newsletter(1,'zzzzzzzz','zzzz');
+$objectN->updateNewsletter();
 
 echo 'endOfYolo \r';
 ?>

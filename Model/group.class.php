@@ -25,7 +25,7 @@ class group
 
     public function getId()
     {
-        return $this->idUser;
+        return $this->idgroup;
     }
 
     public function setAdress($adress)
@@ -59,4 +59,76 @@ class group
     {
 
     }
+
+    public function createGroup()
+    {
+
+        $jsonToInsert = '{"GroupName":"'.$this->getGroupName().'","adressEmail":"'.$this->getAdress().'"}';
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/groups';
+
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER,
+            array("Content-type: application/json"));
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonToInsert);
+
+        $json_response = curl_exec($curl);
+
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+
+        echo $result;
+        var_dump($jsonToInsert);
+    }
+
+    public static function  deleteGroupById($id)
+    {
+
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/groups/delete/'.$id;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+        $json_response = curl_exec($curl);
+
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+        echo  $result;
+    }
+
+    public function updateGroup()
+    {
+        $userToUpdate = '{"idGroup":'.$this->getId().',"GroupName":"'.$this->getGroupName().'","getGroupName":"'.$this->getGroupName().'"}';
+        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/groups/update/'.$this->getId();
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $userToUpdate);
+        $json_response = curl_exec($curl);
+
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+        echo  $result;
+    }
+
+
+
 }
