@@ -50,7 +50,7 @@ class User
         $arrayOfGroup =  array();
 
         foreach($jsonData->group as $mydata) {
-            array_push($arrayOfGroup, new User($mydata->idUser, $mydata->name, $mydata->adress));
+            array_push($arrayOfGroup, new Newsletter($mydata->idUser, $mydata->name, $mydata->adress));
         }
         return  $arrayOfGroup ;
     }
