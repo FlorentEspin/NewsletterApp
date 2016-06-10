@@ -59,7 +59,7 @@ class User
     {
           foreach(this.self::getAllUser() as $user)
           {
-             //if ($user->getName()
+                 //if ($user->getName()
           }
     }
 }
