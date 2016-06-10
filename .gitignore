@@ -1,1 +1,5 @@
+# generate files by PhpStorm
 .idea/
+
+# git
+.git/
