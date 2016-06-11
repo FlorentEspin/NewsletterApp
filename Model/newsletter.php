@@ -25,7 +25,7 @@ class Newsletter
         return $this->CampagneName;
     }
 
-    public function getIdnewsletter()
+        public function getIdnewsletter()
     {
         return $this->idnewsletter;
     }
@@ -50,7 +50,6 @@ class Newsletter
     {
         $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/newsletters",true));
         $arrayOfGroup =  array();
-        var_dump($jsonData);
         foreach($jsonData->newsletter as $mydata) {
             array_push($arrayOfGroup, new Newsletter($mydata->idNewsletter, $mydata->CampagneName, $mydata->HtmlBody));
         }
@@ -59,17 +58,19 @@ class Newsletter
 
     public static function getNewslettersByID($id)
     {
+        $id = str_replace("'", "", $id);
         $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/newsletters/".$id,true));
         $arrayOfGroup =  array();
-        var_dump($jsonData);
-       
-        return  $jsonData->newsletter ;
+        foreach($jsonData->newsletter as $mydata) {
+            array_push($arrayOfGroup, new Newsletter($mydata->idNewsletter, $mydata->CampagneName, $mydata->HtmlBody));
+        }
+        return  $arrayOfGroup ;
     }
 
-    public function createNewsletter($idUser)
+    public function createNewsletter($idgroup)
     {
-
-        $jsonToInsert = '{"idUser":"'.$idUser.'", "HtmlBody":"'.$this->getHtmlBody().'", "CampagneName":"'.$this->getCampagneName().'"}';
+        // ERREUR DANS LE WEB SERVICE iduser = idgroup!!!!!!!
+        $jsonToInsert = '{"idUser":"'.$idgroup.'", "HtmlBody":"'.$this->getHtmlBody().'", "CampagneName":"'.$this->getCampagneName().'"}';
 
 
         $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/newsletters';
@@ -93,7 +94,6 @@ class Newsletter
         curl_close($curl);
 
         echo $result;
-        var_dump($jsonToInsert);
     }
     
     public static function  deleteNewsletterById($id)

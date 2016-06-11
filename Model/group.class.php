@@ -19,7 +19,7 @@ class group
         return $this->adress;
     }
 
-    public function getGroupName()
+        public function getGroupName()
     {
         return $this->name;
     }
@@ -46,7 +46,7 @@ class group
 
     public static function getAllGroup()
     {
-        $jsonData =  json_decode(file_get_contents("http://localhost:8080/WebserviceSlimNewslettersProject/api/groups",true));
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/groups",true));
         $arrayOfGroup =  array();
 
         foreach($jsonData->group as $mydata) {
@@ -102,9 +102,19 @@ class group
         // Free up the resources $curl is using
         curl_close($curl);
 
-        echo $result;
+        return $result;
     }
 
+    public function getAllUserFromGroup()
+    {
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/groups/users/".$this->getId(),true));
+        $arrayOfGroup =  array();
+
+        foreach($jsonData->group as $mydata) {
+            array_push($arrayOfGroup, new concat_usergroup($mydata->iduser, $mydata->idgroup));
+        }
+        return  $arrayOfGroup ;
+    }
     public static function  deleteGroupById($id)
     {
 

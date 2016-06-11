@@ -7,6 +7,8 @@
 	require_once("../Model/group.class.php");
 	require_once("../Model/newsletter.php");
 	require_once("../Model/attachment.php");
+    require_once("../Model/concat_usergroup.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +20,10 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" href="#">
+
+        <link rel="stylesheet" href="../web/css/cstyle.css">
+        <link rel="stylesheet" href="../web/css/cprism.css">
+        <link rel="stylesheet" href="../web/css/chosen.css">
 
         <!-- Bootstrap core CSS -->
         <link href="../web/bootstrap/css/bootstrap.min.css" rel="stylesheet">

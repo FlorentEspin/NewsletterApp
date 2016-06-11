@@ -129,4 +129,17 @@ class User
         echo  $result;
     }
 
+
+    public static function  getUserById($id)
+    {
+
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/users/".$id,true));
+        $arrayOfGroup =  array();
+
+        $user=null;
+        foreach($jsonData->user as $mydata) {
+           $user= new User($mydata->idUser, $mydata->userName, $mydata->userAdressEmail);
+        }
+        return  $user ;
+    }
 }
