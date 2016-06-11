@@ -1,22 +1,29 @@
 <?php
+<<<<<<< HEAD
 session_start();
 require("../Model/user.class.php");
 require("../Model/ListGroup.php");
 require("../Model/group.class.php");
 require("../Model/newsletter.php");
 require("../Model/attachment.php");
+=======
+   	include("../auth/session.php");
+	session_start();
+?>
+>>>>>>> 09c45321a36dbf77f2bc9bf4900cec327f088675
 
+<!-- HEADER, MENU --> <?php include_once("templates/header.php"); ?>
 
+<div class="container container-custom">
 
+    <div class="starter-template">
+        <h1>HOME PAGE</h1>
 
-echo 'Begingyolo\r';
+    </div>
 
-/*
-foreach (group::getAllGroup() as $item)
-{
-echo $item->getGroupName();
-}*/
+</div><!-- /.container -->
 
+<<<<<<< HEAD
 /*
 foreach (newsletter::getAllnewsletter() as $item)
 {
@@ -53,3 +60,6 @@ var_dump(User::getAllUser());
 
 echo 'endOfYolo \r';
 ?>
+=======
+<!-- FOOTER --> <?php include_once("templates/footer.php") ?>
+>>>>>>> 09c45321a36dbf77f2bc9bf4900cec327f088675

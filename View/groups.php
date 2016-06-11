@@ -1,21 +1,18 @@
 <?php
+<<<<<<< HEAD
 require("../Model/user.class.php");
 require("../Model/ListGroup.php");
 require("../Model/group.class.php");
 require("../Model/newsletter.php");
 require("../Model/attachment.php");
 
+=======
+    include("../auth/session.php");
+    session_start();
+>>>>>>> 09c45321a36dbf77f2bc9bf4900cec327f088675
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="#">
 
+<<<<<<< HEAD
         <link rel="stylesheet" href="../web/css/cstyle.css">
         <link rel="stylesheet" href="../web/css/cprism.css">
         <link rel="stylesheet" href="../web/css/chosen.css">
@@ -192,3 +189,40 @@ require("../Model/attachment.php");
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     </body>
 </html>
+=======
+<!-- HEADER, MENU --> <?php include_once("templates/header.php"); ?>
+
+<div class="container container-custom">
+
+    <div class="starter-template">
+        <h1>Groups</h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Group name</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>group a</td>
+                    <td>azerty@example.com</td>
+                </tr>
+                <tr>
+                    <td>group 52</td>
+                    <td>666@example.com</td>
+                </tr>
+                <tr>
+                    <td>group ggg</td>
+                    <td>aaa@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div><!-- /.container -->
+
+<!-- FOOTER --> <?php include_once("templates/footer.php") ?>
+>>>>>>> 09c45321a36dbf77f2bc9bf4900cec327f088675
