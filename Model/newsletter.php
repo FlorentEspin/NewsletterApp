@@ -1,5 +1,5 @@
 <?php
-
+require_once ("WebServicePATH.php");
 class Newsletter
 {
     private $idnewsletter;
@@ -48,7 +48,7 @@ class Newsletter
 
     public static function getAllnewsletter()
     {
-        $jsonData =  json_decode(file_get_contents("http://localhost:8080/WebserviceSlimNewslettersProject/api/newsletters",true));
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/newsletters",true));
         $arrayOfGroup =  array();
         var_dump($jsonData);
         foreach($jsonData->newsletter as $mydata) {
@@ -59,7 +59,7 @@ class Newsletter
 
     public static function getNewslettersByID($id)
     {
-        $jsonData =  json_decode(file_get_contents("http://localhost:8080/WebserviceSlimNewslettersProject/api/newsletters/".$id,true));
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/newsletters/".$id,true));
         $arrayOfGroup =  array();
         var_dump($jsonData);
        
@@ -72,7 +72,7 @@ class Newsletter
         $jsonToInsert = '{"idUser":"'.$idUser.'", "HtmlBody":"'.$this->getHtmlBody().'", "CampagneName":"'.$this->getCampagneName().'"}';
 
 
-        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/newsletters';
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/newsletters';
 
 
         $curl = curl_init($url);
@@ -99,7 +99,7 @@ class Newsletter
     public static function  deleteNewsletterById($id)
     {
 
-        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/newsletters/delete/'.$id;
+        $url = WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/newsletters/delete/'.$id;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);
@@ -120,7 +120,7 @@ class Newsletter
     public function updateNewsletter()
     {
         $userToUpdate = '{"idNewsletter":'.$this->getIdnewsletter().',"HtmlBody":"'.$this->getHtmlBody().'","CampagneName":"'.$this->getCampagneName().'"}';
-        $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/newsletters/update/'.$this->getIdnewsletter();
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/newsletters/update/'.$this->getIdnewsletter();
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);

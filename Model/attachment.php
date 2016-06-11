@@ -1,10 +1,12 @@
-<?php
 
+<?php
+require_once ("WebServicePATH.php");
 class attachment
 {
     private $idattachment;
     private $name;
     private $serverPath;
+   
 
     public function __construct($idattachment, $name, $serverPath)
     {
@@ -46,7 +48,7 @@ class attachment
 
     public static function getAllattachment()
     {
-        $jsonData = json_decode(file_get_contents("http://localhost:8080/WebserviceSlimNewslettersProject/api/attachments", true));
+        $jsonData = json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/attachments", true));
         $arrayOfGroup = array();
         var_dump($jsonData);
         foreach ($jsonData->attachment as $mydata) {
@@ -57,7 +59,7 @@ class attachment
 
     public static function getattachmentsByID($id)
     {
-        $jsonData = json_decode(file_get_contents("http://localhost:8080/WebserviceSlimNewslettersProject/api/attachments/" . $id, true));
+        $jsonData = json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/attachments/" . $id, true));
         $arrayOfGroup = array();
         var_dump($jsonData);
 
@@ -68,7 +70,7 @@ class attachment
     {
 
         $jsonToInsert = '{"name":"' . $this->getname() . '","serverPath":"' . $this->getserverPath() . '"}';
-        $url = 'http://localhost:8080/WebserviceSlimNewslettersProject/api/attachments';
+        $url = WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/attachments';
 
 
         $curl = curl_init($url);
@@ -94,8 +96,7 @@ class attachment
 
     public static function deleteAttachmentById($idAttchment)
     {
-
-        $url = 'http://localhost:8080/WebserviceSlimNewslettersProject/api/attachments/delete/' . $idAttchment;
+        $url = WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/attachments/delete/' . $idAttchment;
 
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_HEADER, false);

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("../Model/user.class.php");
 require("../Model/ListGroup.php");
 require("../Model/group.class.php");
@@ -33,9 +34,22 @@ foreach (attachment::getAllattachment() as $item)
 }
 $objectN = new attachment(1,'adf','sdfklflmsdlmb');
 $objectN->createAttachment();
-*/
+
 $objectN = new newsletter(1,'zzzzzzzz','zzzz');
-$objectN->updateNewsletter();
+$objectN->createNewsletter(1);
+$objectN = new User(1,'us','us');
+$objectN->createUser();
+
+$objectN = new group(1,'gr','gr');
+$objectN->createGroup();
+
+$objectN = new attachment(1,'at','zzatzz');
+$objectN->createAttachment();
+*/
+
+$objectN = new group(1,'e','za');
+//group::addUserToGroup(12,1);//->deleteGroupById();
+var_dump(User::getAllUser());
 
 echo 'endOfYolo \r';
 ?>
