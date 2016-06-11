@@ -21,7 +21,8 @@
 		$db = new PDO("mysql:host=".$dbhost.";port=".$port.";dbname=".$dbname, $dbuser, $dbpass);
 		$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	} catch(PDOException $e) {
-		echo 'ERROR: ' . $e->getMessage();
+		print "Error!: " . $e->getMessage() . "<br/>";
+    	die();
 	}
 	
 	if(isset($_POST['submit'])){
@@ -45,12 +46,16 @@
 			if(count($results) > 0 && verify_pw($password, $results['appUserPassword'])){
 				$_SESSION['username'] = $results['appUserName'];
 				
-				header('location:dashboard.php');
+				header('location:../View/index.php');
 				exit;
 			}else{
 				$errMsg .= 'Utilisateur ou le mot de passe est incorrect !<br>';
 			}
 		}
+	}
+
+	if($db != null){
+		$db = null;	
 	}
 
 ?>
