@@ -92,6 +92,28 @@ class User
     public static function  deleteUserById($id)
     {
 
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/serviceConcatStatusUsersNewsLetter/deleteUser/'.$id;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+
+        // Send the request
+        $result = curl_exec($curl);
+        
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/ConcatUserGroups/deleteUser/'.$id;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+
+
+        // Send the request
+        $result = curl_exec($curl);
+
         $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/users/delete/'.$id;
 
         $curl = curl_init($url);
@@ -130,9 +152,8 @@ class User
     }
 
 
-    public static function  getUserById($id)
+    public static function getUserById($id)
     {
-
         $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/users/".$id,true));
         $arrayOfGroup =  array();
 

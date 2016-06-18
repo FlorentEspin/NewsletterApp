@@ -15,6 +15,7 @@
                 <tr>
                     <th>User name</th>
                     <th>Email</th>
+                    <th>Edit & delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,15 @@
                     echo  "<tr><td>". $item->getName() ."</td>";
                     echo  "<td>". $item->getAdress() ."</td>";
                     echo "<td>";
+                    echo "</td><td>";
+
+                    echo "<form action='../Controller/deleteUser.php' method=\"get\" id='form".$item->getIdUser()."'>
+                                  <a href='../Controller/deleteUser.php?idUser=".$item->getIdUser()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>
+                                  ";
+                    echo "<form action=\"../Controller/updateUser.php\" method=\"post\"id='form".$item->getIdUser().$item->getIdUser()."'>
+                                <a href='userEditor.php?iduser=".$item->getIdUser()."' class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"/>
+                                   </form>";
+                    echo"</td></tr> </form>";
                 }
                 ?>
                 </tbody>

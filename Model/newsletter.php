@@ -83,7 +83,7 @@ class Newsletter
             array("Content-type: application/json"));
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonToInsert);
-
+    
         $json_response = curl_exec($curl);
 
 

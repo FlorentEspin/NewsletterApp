@@ -118,6 +118,15 @@ class group
     public static function  deleteGroupById($id)
     {
 
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/serviceConcatStatusUsersNewsLetter/deleteGroup/'.$id;
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+        $result = curl_exec($curl);
+
+
         $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/ConcatUserGroups/deleteGroup/'.$id;
 
         $curl = curl_init($url);
@@ -163,6 +172,17 @@ class group
         // Free up the resources $curl is using
         curl_close($curl);
         echo  $result;
+    }
+
+    public static function getGroupById($id)
+    {
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/groups/".$id,true));
+        $arrayOfGroup =  array();
+
+        foreach($jsonData->group as $mydata) {
+            array_push($arrayOfGroup, new group( $mydata->idGroup,$mydata->GroupName, $mydata->adressEmail));
+        }
+        return  $arrayOfGroup ;
     }
 
 

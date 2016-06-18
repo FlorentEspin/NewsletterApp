@@ -19,6 +19,7 @@ if(session_id() == '' || !isset($_SESSION)) {
                             <th>Group name</th>
                             <th>Email</th>
                             <th>Users</th>
+                            <th>Edit & delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,26 +32,22 @@ if(session_id() == '' || !isset($_SESSION)) {
                             echo "<td>";
                             foreach ($item->getAllUserFromGroup() as $aGroupItem)
                             {
-                              
                                $user =  User::getUserById($aGroupItem->getIdUser());
                                 echo $user->getName();
                                 echo "<br/>";
                             }
-                            echo "</td>  </tr>";
+                            echo "</td><td>";
+
+                            echo "<form action='../Controller/deleteGroup.php' method=\"get\" id='form".$item->getId()."'>
+                                  <a href='../Controller/deleteGroup.php?idgroup=".$item->getId()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>
+                                  ";
+                            echo "<form action=\"../Controller/updateGroup.php\" method=\"post\"id='form".$item->getId().$item->getId()."'>
+                                <a href='groupEditor.php?idgroup=".$item->getId()."' class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"/>
+                                   </form>";
+                            echo"</td></tr> </form>";
                         }
                         ?>
 
-                       <!--
-                            <td>group a</td>
-                            <td>azerty@example.com</td>
-                        <tr>
-                            <td>group 52</td>
-                            <td>666@example.com</td>
-                        </tr>
-                        <tr>
-                            <td>group ggg</td>
-                            <td>aaa@example.com</td>
-                        </tr> -->
                     </tbody>
                 </table>
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
