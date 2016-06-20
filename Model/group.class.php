@@ -1,5 +1,7 @@
 <?php
 require_once ("WebServicePATH.php");
+require_once ("status.php");
+
 
 class group
 {
@@ -184,6 +186,23 @@ class group
         }
         return  $arrayOfGroup ;
     }
+
+    public static function getStatusGroupById($id)
+    {
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/groups/status/".$id,true));
+        $arrayOfGroup =  array();
+
+        foreach($jsonData->concatStatus as $mydata) {
+            $status = status::getStatusById($mydata->idStatus);
+          //  var_dump($status);
+            array_push($arrayOfGroup,$status);
+        }
+        //var_dump($arrayOfGroup);
+        return  $arrayOfGroup ;
+
+    }
+
+
 
 
 

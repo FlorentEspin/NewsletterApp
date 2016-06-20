@@ -4,11 +4,13 @@ require ("../Model/user.class.php");
 require ("../Model/newsletter.php");
 $idgroup = str_replace('"', "", $_POST["SelectGroup"]);
 
-$newsletter = new Newsletter(0,$_POST["CampaignName"],$_POST["rte1"]);
+
+$formatedHTMLBODY = preg_replace( "/\r|\n/", "", $_POST["rte1"] );
+var_dump($formatedHTMLBODY );
+
+$newsletter = new Newsletter(0,$_POST["CampaignName"],$formatedHTMLBODY );
 $newsletter->createNewsletter($_POST["SelectGroup"]);
-var_dump($newsletter);
 echo $idgroup;
 
 //header("location:../View/Campaigns.php");
-var_dump($_POST)
 ?>

@@ -23,7 +23,8 @@
             <?php
             foreach (newsletter::getAllnewsletter() as $aNewsletter)
             {
-                echo "<tr></tr><td><a href =campaignsEditor.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />".$aNewsletter->getCampagneName()." </td></tr>";
+                echo "<tr><td><a href =campaignsEditor.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />".$aNewsletter->getCampagneName()." </td>";
+                echo "<td><a href =campaignsStatus.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />Click to see status </td></tr>";
             }
             ?>
 
