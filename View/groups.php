@@ -73,7 +73,6 @@ if(session_id() == '' || !isset($_SESSION)) {
                                     <em>Multiple Select</em>
                                     <select data-placeholder="Users" multiple class="chosen-select-width" tabindex="16">
                                         <option value=""></option>
-                                        <option>American Black Bear</option>
                                         <?php
                                         foreach (User::getAllUser() as $item)
                                         {

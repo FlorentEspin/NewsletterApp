@@ -25,8 +25,8 @@
                 {
                     echo  "<tr><td>". $item->getName() ."</td>";
                     echo  "<td>". $item->getAdress() ."</td>";
+
                     echo "<td>";
-                    echo "</td><td>";
 
                     echo "<form action='../Controller/deleteUser.php' method=\"get\" id='form".$item->getIdUser()."'>
                                   <a href='../Controller/deleteUser.php?idUser=".$item->getIdUser()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>

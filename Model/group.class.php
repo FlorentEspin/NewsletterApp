@@ -156,7 +156,7 @@ class group
 
     public function updateGroup()
     {
-        $userToUpdate = '{"idGroup":'.$this->getId().',"GroupName":"'.$this->getGroupName().'","getGroupName":"'.$this->getGroupName().'"}';
+        $userToUpdate = '{"idGroup":'.$this->getId().',"GroupName":"'.$this->getGroupName().'","adressEmail":"'.$this->getAdress().'"}';
         $url ='http://localhost:8080/WebserviceSlimNewslettersProject/api/groups/update/'.$this->getId();
 
         $curl = curl_init($url);

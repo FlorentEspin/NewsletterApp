@@ -60,7 +60,7 @@
                     option.selected=true;
                     x.add(option);
                 }
-                document.forms["form"].submit();
+                    document.forms["form"].submit();
             }
         </script>
         </form>
