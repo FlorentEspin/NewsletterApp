@@ -15,7 +15,8 @@
             <tr>
                 <th>Group name</th>
                 <th>Email</th>
-                <th>Users</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -23,8 +24,18 @@
             <?php
             foreach (newsletter::getAllnewsletter() as $aNewsletter)
             {
-                echo "<tr><td><a href =campaignsEditor.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />".$aNewsletter->getCampagneName()." </td>";
-                echo "<td><a href =campaignsStatus.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />Click to see status </td></tr>";
+                echo "<tr><td>".$aNewsletter->getCampagneName()." </td>";
+
+                echo "<td><a href =campaignsStatus.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />Click to see status </td>";
+
+                echo "<td><form action=\"../Controller/updateCampaign.php\" method=\"post\"id='form".$aNewsletter->getIdnewsletter().$aNewsletter->getIdnewsletter()."'>
+                            <a href='campaignsEditor.php?idcampaign=".$aNewsletter->getIdnewsletter()."' class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"/></td> </form>";
+
+                echo "<td><form action='../Controller/deleteCampaign.php' method=\"get\" id='form".$aNewsletter->getIdnewsletter()."'>
+                                  <a href='../Controller/deleteCampaign.php?idcampaign=".$aNewsletter->getIdnewsletter()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>
+                                  </form></tr></td>";
+
+
             }
             ?>
 

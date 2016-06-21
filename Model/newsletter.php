@@ -67,6 +67,17 @@ class Newsletter
         return  $arrayOfGroup ;
     }
 
+        public static function getNewsletterByID($id)
+    {
+        $id = str_replace("'", "", $id);
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/newsletters/".$id,true));
+        $user =  null;
+        foreach($jsonData->newsletter as $mydata) {
+            $user = new Newsletter($mydata->idNewsletter, $mydata->CampagneName, $mydata->HtmlBody);
+        }
+        return  $user ;
+    }
+
     public function createNewsletter($idgroup)
     {
         // ERREUR DANS LE WEB SERVICE iduser = idgroup!!!!!!!
