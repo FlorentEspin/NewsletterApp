@@ -141,8 +141,6 @@ class User
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $userToUpdate);
-        $json_response = curl_exec($curl);
-
         // Send the request
         $result = curl_exec($curl);
 
@@ -163,4 +161,18 @@ class User
         }
         return  $user ;
     }
+
+    public static function getUserByStatusId($id)
+    {
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/users/status/".$id,true));
+        $arrayOfGroup =  array();
+        foreach($jsonData->concat_statususernewsletter as $mydata) {
+            $jsonDataUser =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/users/".$mydata->idUser,true));
+            foreach($jsonDataUser->user as $aUser) {
+                array_push($arrayOfGroup, new user( $aUser->idUser, $aUser->userName,$aUser->userAdressEmail));
+            }
+        }
+        return  $arrayOfGroup ;
+    }
+
 }

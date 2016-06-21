@@ -194,7 +194,6 @@ class group
 
         foreach($jsonData->concatStatus as $mydata) {
             $status = status::getStatusById($mydata->idStatus);
-          //  var_dump($status);
             array_push($arrayOfGroup,$status);
         }
         //var_dump($arrayOfGroup);

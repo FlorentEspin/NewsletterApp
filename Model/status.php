@@ -33,7 +33,7 @@ class status
         $this->idStatus = $idStatus;
     }
 
-    public function setName($DesignationStatus)
+    public function setDesignation($DesignationStatus)
     {
         $this->DesignationStatus = $DesignationStatus;
     }
@@ -48,6 +48,27 @@ class status
         }
         return  $arrayOfGroup ;
     }
+
+
+    public function updateStatus()
+    {
+        $userToUpdate = '{"idStatus":'.$this->getId().',"DesignationStatus":"'.$this->getDesignation().'"}';
+        $url =WebServicePATH::returnWebServicePATH().'/WebserviceSlimNewslettersProject/api/status/update/';
+
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $userToUpdate);
+        // Send the request
+        $result = curl_exec($curl);
+
+        // Free up the resources $curl is using
+        curl_close($curl);
+        echo  $result;
+
+    }
+    
 
 
 }
