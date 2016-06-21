@@ -1,4 +1,6 @@
 <?php
+include '../Controller/GenerateStatistique.php';
+GenGraph();
    	include("../auth/session.php");
 	session_start();
 ?>
@@ -9,6 +11,7 @@
 
     <div class="starter-template">
         <h1>HOME PAGE</h1>
+        <img src="../web/images/files.jpg" />
 
     </div>
 
