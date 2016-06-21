@@ -23,7 +23,15 @@ class concat_statususernewsletter
         return $this->idUser;
     }
 
+    public function getIdNewsletter()
+    {
+        return $this->idNewsletter;
+    }
 
+    public function getIdStatus()
+    {
+        return $this->idStatus;
+    }
 
     public function setIdUser($idUser)
     {
@@ -33,6 +41,15 @@ class concat_statususernewsletter
     public function setIdGroup($idgroup)
     {
         $this->idgroup = $idgroup;
+    }
+    public function setIdNewsletter($idNewsletter)
+    {
+        $this->idNewsletter = $idNewsletter;
+    }
+
+    public function setIdStatus($idStatus)
+    {
+        $this->idStatus= $idStatus;
     }
 
 
@@ -55,5 +72,18 @@ class concat_statususernewsletter
         echo  $result;
 
         // Send the request
+    }
+
+    public static function getStatusByNewsletterID($id)
+    {
+        $jsonData =  json_decode(file_get_contents(WebServicePATH::returnWebServicePATH()."/WebserviceSlimNewslettersProject/api/serviceConcatStatusUsersNewsLetter/newsletters/".$id,true));
+        $arrayOfGroup =  array();
+        foreach($jsonData->concat_statususernewsletter as $mydata) {
+            $concat = new concat_statususernewsletter($mydata->idUser, $mydata->idGroup);
+            $concat->setIdNewsletter($mydata->idNewsletter);
+            $concat->setIdStatus($mydata->idStatus);
+            array_push($arrayOfGroup, $concat);
+        }
+        return  $arrayOfGroup ;
     }
 }
