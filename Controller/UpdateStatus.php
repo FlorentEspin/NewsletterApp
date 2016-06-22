@@ -16,5 +16,5 @@ else
 }
 
 $status[0]->updateStatus();
-
+header("location:../View/campaignsViewer.php?idnewsletter=".$query['idneswletter']);
 ?>
