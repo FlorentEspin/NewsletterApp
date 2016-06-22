@@ -88,7 +88,7 @@ try {
     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
     $mail->Port       = 465;                   // set the SMTP port for the GMAIL server
     $mail->Username = "toxsyx@gmail.com";  // GMAIL username
-    $mail->Password   = "fnpxh8axfn";            // GMAIL password
+    $mail->Password   = "";            // GMAIL password
    // $mail->AddReplyTo('name@yourdomain.com', 'First Last');
     $mail->AddAddress('toxsyx@gmail.com', 'toxsyx@gmail.com');
     $mail->SetFrom('toxsyx@gmail.com', 'toxsyx@gmail.com');
