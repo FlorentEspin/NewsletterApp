@@ -7,17 +7,17 @@
 <div class="container container-custom">
 
     <div class="starter-template">
-        <h1>Campaigns</h1>
+        <h1>Groups editor</h1>
         <form action="../Controller/updateGroup.php" method="post">
          <?php
 
          foreach(group::getGroupById($_GET['idgroup']) as $aGroup) {
-             echo "<input type='hidden' name='idgroups' value='". $aGroup->getId() . "'>";
-             echo "<label>ID Group : " . $aGroup->getId() . "</label><br/>";
-             echo "Group Name: <input type=\"text\" name='GroupName' value='" . $aGroup->getGroupName() . "'><br/>";
-             echo "Group Adress: <input type=\"text\" name='GroupAdress' value='" . $aGroup->getAdress() . "'>";
+             echo "<input type='hidden' name='idgroups' value='". $aGroup->getId() . "'></br>";
+             echo "<label>ID Group : " . $aGroup->getId() . "</label><br/></br>";
+             echo "Group Name: <input type=\"text\" name='GroupName' value='" . $aGroup->getGroupName() . "'><br/></br>";
+             echo "Group Adress: <input type=\"text\" name='GroupAdress' value='" . $aGroup->getAdress() . "'></br>";
 
-             echo " <div>
+             echo " <div></br>
         <select data-placeholder=\"Users\" multiple class=\"chosen-select-width\" tabindex=\"16\">
             <option value=\"\"></option>";
 
@@ -45,6 +45,9 @@
 
          }
             ?>
+
+        </br>
+
         <button  onclick="submitform()" class="btn btn-primary">Save changes</button>
 
         <select id="elements" name="users[]" multiple size="5"></select>

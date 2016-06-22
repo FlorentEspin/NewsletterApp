@@ -68,7 +68,8 @@ if(session_id() == '' || !isset($_SESSION)) {
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="control-label">adressEmail</label>
-                                    <textarea class="form-control" id="message-text" name = "adressEmail"></textarea>
+                                    <!-- <textarea class="form-control" id="message-text" name = "adressEmail"></textarea> -->
+                                    <input type="text" class="form-control" id="message-text" name="adressEmail">
                                 </div>
                             <div class="side-by-side clearfix">
                                 <div>

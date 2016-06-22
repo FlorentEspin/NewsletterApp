@@ -264,6 +264,14 @@ tr{
   width: 100%;
 }
 
+.modal-content{
+  padding: 20px;
+}
+
+#elements{
+  display: none;
+}
+
 /*.xe-notice{
   display: none;
 }*/

@@ -52,46 +52,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="control-label">adressEmail</label>
-                                <textarea class="form-control" id="message-text" name = "adressEmail"></textarea>
+                                <!-- <textarea class="form-control" id="message-text" name = "adressEmail"></textarea> -->
+                                <input type="text" class="form-control" id="message-text" name="adressEmail">
                             </div>
-                            <div class="side-by-side clearfix">
-                                <div>
-                                    <em>Multiple Select</em>
-                                    <select data-placeholder="Users" multiple class="chosen-select-width" tabindex="16">
-                                        <option value=""></option>
-                                        <option>American Black Bear</option>
-                                        <?php
-                                        foreach (User::getAllUser() as $item)
-                                        {
-                                            echo "<option>".$item->getIdUser().";".$item->getName()."</option><br/>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button  onclick="submitform()" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
-                        <select id="elements" name="users[]" multiple size="5"></select>
-                        <script>
-                            function submitform()
-                            {
-                                var selectUser = document.getElementsByName("user");
-                                for(var i = 0 ; selectUser.length; i++)
-                                {
-                                    var x = document.getElementById("elements");
-                                    var option = document.createElement("option");
-                                    option.text = selectUser[i].innerHTML;
-                                    option.selected=true;
-                                    x.add(option);
-                                }
-                                document.forms["form"].submit();
-                            }
-                        </script>
+                    </div>
+                </div>
             </form>
 
         </div>
