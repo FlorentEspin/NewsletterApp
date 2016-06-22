@@ -8,14 +8,17 @@ session_start();
 <div class="container container-custom">
 
     <div class="starter-template">
-        <h1>Campaigns</h1>
+        <h1>Campaigns </h1>
 
         <ul class="list-group">
             <?php
 
             foreach(newsletter::getNewslettersByID($_GET['idnewsletter']) as $aNewsletterItem)
             {
-                echo $aNewsletterItem->getCampagneName();
+                 Echo "Campagne Name : ".$aNewsletterItem->getCampagneName();
+
+                Echo "<br/> CampagneBody : ".$aNewsletterItem->getHtmlBody();
+
             }
 
             ?>
