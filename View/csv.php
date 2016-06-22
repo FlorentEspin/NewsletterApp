@@ -10,7 +10,7 @@ session_start();
 	<div class="starter-template">
 		<h1>CSV Import</h1>
 
-		<form action="../Controller/uploadCsv.php" method="post" enctype="multipart/form-data">
+		<form id="csvidform" action="../Controller/uploadCsv.php" method="post" enctype="multipart/form-data">
 			<input id="input-1" class="file" type="file" name="csv" value="" />
 			<input type="submit" name="submit" value="Save" />
 		</form>

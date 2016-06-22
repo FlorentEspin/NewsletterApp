@@ -16,10 +16,11 @@ if(session_id() == '' || !isset($_SESSION)) {
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Group name</th>
-                            <th>Email</th>
-                            <th>Users</th>
-                            <th>Edit & delete</th>
+                            <th><strong>Group name</strong></th>
+                            <th><strong>Email</strong></th>
+                            <th><strong>Users</strong></th>
+                            <th><strong>Edit</strong></th>
+                            <th><strong>Delete</strong></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,16 +37,17 @@ if(session_id() == '' || !isset($_SESSION)) {
                                 echo $user->getName();
                                 echo "<br/>";
                             }
-                            echo "</td><td>";
+                            echo "</td>";
 
-                            echo "<form action='../Controller/deleteGroup.php' method=\"get\" id='form".$item->getId()."'>
-                                  <a href='../Controller/deleteGroup.php?idgroup=".$item->getId()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>
-                                  ";
-                            echo "<form action=\"../Controller/updateGroup.php\" method=\"post\"id='form".$item->getId().$item->getId()."'>
+                            echo "<td><form action=\"../Controller/updateGroup.php\" method=\"post\"id='form".$item->getId().$item->getId()."'>
                                 <a href='groupEditor.php?idgroup=".$item->getId()."' class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"/>
-                                   </form>";
-                            echo"</td></tr> </form>";
+                                   </form></td>";
+
+                            echo "<td><form action='../Controller/deleteGroup.php' method=\"get\" id='form".$item->getId()."'>
+                                  <a href='../Controller/deleteGroup.php?idgroup=".$item->getId()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/></form></td></tr>";
+
                         }
+
                         ?>
 
                     </tbody>

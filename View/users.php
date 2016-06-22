@@ -8,14 +8,15 @@
     <div class="container container-custom">
 
         <div class="starter-template">
-            <h1>Groups</h1>
+            <h1>Users</h1>
 
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>User name</th>
-                    <th>Email</th>
-                    <th>Edit & delete</th>
+                    <th><strong>User name</strong></th>
+                    <th><strong>Email</strong></th>
+                    <th><strong>Edit</strong></th>
+                    <th><strong>Delete</strong></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,15 +27,13 @@
                     echo  "<tr><td>". $item->getName() ."</td>";
                     echo  "<td>". $item->getAdress() ."</td>";
 
-                    echo "<td>";
 
-                    echo "<form action='../Controller/deleteUser.php' method=\"get\" id='form".$item->getIdUser()."'>
-                                  <a href='../Controller/deleteUser.php?idUser=".$item->getIdUser()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/>
-                                  ";
-                    echo "<form action=\"../Controller/updateUser.php\" method=\"post\"id='form".$item->getIdUser().$item->getIdUser()."'>
+                    echo "<td><form action=\"../Controller/updateUser.php\" method=\"post\"id='form".$item->getIdUser().$item->getIdUser()."'>
                                 <a href='userEditor.php?iduser=".$item->getIdUser()."' class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"/>
-                                   </form>";
-                    echo"</td></tr> </form>";
+                                   </form></td>";
+
+                    echo "<td><form action='../Controller/deleteUser.php' method=\"get\" id='form".$item->getIdUser()."'>
+                                  <a href='../Controller/deleteUser.php?idUser=".$item->getIdUser()."' class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"/></form></td></tr>";
                 }
                 ?>
                 </tbody>

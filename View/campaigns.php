@@ -8,15 +8,15 @@
 <div class="container container-custom">
 
     <div class="starter-template">
-        <h1>Groups</h1>
+        <h1>Campaigns</h1>
 
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Group name</th>
-                <th>Email</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th><strong>Group name</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Edit</strong></th>
+                <th><strong>Delete</strong></th>
             </tr>
             </thead>
             <tbody>

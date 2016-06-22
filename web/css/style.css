@@ -201,3 +201,69 @@ i { font-style: italic; }
   padding-left: 27px;
   text-decoration: none;
 }
+
+.navbar-fixed-top{
+  position:inherit!important;
+}
+
+.navbar-nav a{
+  font-size: 15px;
+  color: #b3d1ff!important;
+}
+
+.navbar-nav a:hover{
+  font-size: 15px;
+  color: white!important;
+}
+
+
+.navbar-nav{
+  height: 35px;
+}
+
+h1{
+  font-size: 36px;
+  font-family: Verdana, sans-serif;
+  color: #8080ff;
+  text-shadow: 1px 2px #413f3f;
+  text-align: center;
+  margin: 30px;
+  font-weight: 900;
+}
+
+.table{
+  border: #ccccff 3px solid!important;
+}
+
+td{
+  background-color: #e6e6e6;
+  color: #1a8cff;
+  border:solid 2px white!important;
+}
+
+tr{
+  background-color: #ccccff;
+  border:solid 2px white!important;
+}
+
+.btn-primary a{
+  color: white!important;
+}
+
+.btn-primary{
+  margin-bottom: 50px;
+}
+
+#input-1{
+  margin: auto;
+}
+
+#csvidform{
+  text-align: center;
+  padding-top: 50px;
+  width: 100%;
+}
+
+/*.xe-notice{
+  display: none;
+}*/
