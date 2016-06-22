@@ -24,7 +24,8 @@
             <?php
             foreach (newsletter::getAllnewsletter() as $aNewsletter)
             {
-                echo "<tr><td>".$aNewsletter->getCampagneName()." </td>";
+                echo "<tr><td><a href =campaignsViewer.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />".$aNewsletter->getCampagneName().  " </td>";
+
 
                 echo "<td><a href =campaignsStatus.php?idnewsletter='".$aNewsletter->getIdnewsletter()."' />Click to see status </td>";
 

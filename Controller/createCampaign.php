@@ -12,5 +12,5 @@ $newsletter = new Newsletter(0,$_POST["CampaignName"],$formatedHTMLBODY );
 $newsletter->createNewsletter($_POST["SelectGroup"]);
 echo $idgroup;
 
-//header("location:../View/Campaigns.php");
+header("location:../View/Campaigns.php");
 ?>
